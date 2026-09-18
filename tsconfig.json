@@ -1,0 +1,27 @@
+{
+	"extends": "./.svelte-kit/tsconfig.json",
+	"compilerOptions": {
+		"rewriteRelativeImportExtensions": true,
+		"allowJs": true,
+		"checkJs": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"sourceMap": true,
+		"strict": true,
+		"moduleResolution": "bundler",
+		// The simulation core is tested with `bun test`, and the test files sit next
+		// to the modules they cover. TypeScript's bundler resolution refuses to
+		// resolve the `bun:test` specifier because it looks like a URI scheme, so
+		// the ambient module declaration from bun-types has to be pulled in
+		// explicitly. This option only affects globally included type packages;
+		// module resolution for `three` and friends is unaffected.
+		"types": ["bun"]
+	}
+	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias
+	// except $lib which is handled by https://svelte.dev/docs/kit/configuration#files
+	//
+	// To make changes to top-level options such as include and exclude, we recommend extending
+	// the generated config; see https://svelte.dev/docs/kit/configuration#typescript
+}

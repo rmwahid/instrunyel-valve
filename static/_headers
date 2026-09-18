@@ -1,0 +1,5 @@
+# The names under _app/immutable contain a content hash, so a name can never refer to
+# different bytes. Serving them as immutable removes a validation round trip per file
+# on every repeat visit, which is what made moving between pages feel slow.
+/_app/immutable/*
+  Cache-Control: public, max-age=31536000, immutable

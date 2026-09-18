@@ -1,0 +1,15 @@
+{
+	// Deployment target: a Workers project that only serves static assets, no Worker script.
+	// `bun run deploy` builds the site and uploads this folder in one step.
+	"name": "instrunyel-valve",
+	// Bump this when you want newer runtime behaviour to apply to the deployment.
+	"compatibility_date": "2026-09-18",
+	"assets": {
+		"directory": "./build",
+		// Serve index.html for navigation requests that do not match a file, which is what a
+		// single page app needs. This is the only SPA fallback here on purpose: a _redirects
+		// catch-all is rejected by the Workers API as an infinite loop. The prerendered
+		// index.html hydrates into the app shell, so an unknown path still reaches the router.
+		"not_found_handling": "single-page-application"
+	}
+}
